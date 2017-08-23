@@ -10,11 +10,7 @@ var words = function (str) {
 
 // Exercise 1 Result
 
-var getWords = function () {
-  return function (str) {
-    return _.split(' ', str)
-  }
-}
+var wordsResult = _.split(' ')
 
 // test
 console.log(getWords()('hola mundo'))
@@ -28,7 +24,7 @@ var sentences = undefined
 
 // Exercise 1a Result
 
-var sentencesResult = _.map(words)
+var sentencesResult = _.map(wordsResult)
 
 // test
 console.log(sentencesResult(['hola mundo', 'hola_mundo']))
@@ -46,13 +42,7 @@ var filterQs = function (xs) {
 
 // Exercise 2 Result
 
-var filterQsResult = function(){
-  return function (xs) {
-    return _.filter(function (x) {
-      return match(/q/i, x)
-    }, xs)
-  }
-}
+var filterQsResult = _.filter(match(/q/i))
 
 // Exercise 3
 //==============
@@ -71,14 +61,22 @@ var max = function (xs) {
   }, -Infinity, xs)
 }
 
+var masRefactor = _.reduce(_keepHighest, -Infinity)
+
 // Bonus 1:
 // ============
 // Wrap array's slice to be functional and curried.
 // //[1, 2, 3].slice(0, 2)
 var slice = undefined
 
+var sliceResult = _.curry(function (start, end, xs) {
+  return xs.slice(start, end)
+})
+
 // Bonus 2:
 // ============
 // Use slice to define a function "take" that returns n elements from the beginning of an array. Make it curried.
 // For ['a', 'b', 'c'] with n=2 it should return ['a', 'b'].
 var take = undefined
+
+var takeResult = slice(0)
